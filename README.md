@@ -1,4 +1,4 @@
-# Viro Starter Kit
+# AR Kit
 
 This is a blank React Native project setup with Viro.
 
