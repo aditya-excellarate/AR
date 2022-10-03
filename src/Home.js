@@ -33,6 +33,11 @@ const Home = ({navigation}) => {
         style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
         <Text style={{color: '#000'}}>SwitchingObjects</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('DetectLogo')}
+        style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
+        <Text style={{color: '#000'}}>Detect Logo</Text>
+      </TouchableOpacity>
     </View>
   );
 };

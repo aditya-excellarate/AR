@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",
-    "@viro-community/react-viro": "^2.20.2",
+    "@viro-community/react-viro": "^2.23.0",
     "lottie-react-native": "^5.1.4",
     "react": "17.0.2",
     "react-native": "0.65.1",
