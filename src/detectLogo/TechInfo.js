@@ -78,7 +78,7 @@ const positions = [
   [detectedPosition[0] + 3, detectedPosition[0] + 0, -10],
   [detectedPosition[0], detectedPosition[0] + 8, -10],
 ];
-const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
+const TechInfo = ({onPressCategory, onPressTechnologyLogo}) => {
   const [technologyArray, setTechnologyArray] = useState(staticTechnologyArray);
 
   technologyArray?.map((item, index) => {
@@ -114,17 +114,6 @@ const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
 
   const indexPosition = value => {
     return positions[value];
-    // const position = -value;
-    // const z = value + 2;
-    // if (value % 2 === 0) {
-    //   const x = -value;
-    //   return [getRandomInt(-7, 7), getRandomInt(-7, 7), -10];
-    // }
-    // if (value % 3 === 0) {
-    //   const x = value + 2;
-    //   return [getRandomInt(1, 5), getRandomInt(1, 5), -10];
-    // }
-    // return [getRandomInt(-3, -1), getRandomInt(-3, -1), -10];
   };
 
   ViroMaterials.createMaterials({
@@ -134,79 +123,54 @@ const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
     technologyBG: {
       normalTexture: require('./technologyBG.png'),
       diffuseTexture: require('./technologyBG.png'),
-      // animation: {
-      //   name: animationDone ? 'reverse' : 'forward',
-      //   loop: false,
-      //   run: true,
-      //   onFinish: () => setAnimationDone(!animationDone),
-      // },
       rotateY: '+=90',
     },
   });
 
   return (
     <ViroARScene>
-      {technologyArray?.map((item, index) => (
-        <>
-          <ViroFlexView
+      {/* {technologyArray?.map((item, index) => ( */}
+      <>
+        <ViroFlexView
+          width={2}
+          height={2}
+          radius={1.5}
+          position={[0, 0, -10]}
+          key={`View${0}`}
+          opacity={1}
+          // materials="technologyBG"
+          backgroundColor="#FFF"
+          style={{
+            radius: 0.5,
+            opacity: 0,
+            borderRadius: 5,
+            backgroundColor: '#FFF',
+          }}
+          // onPress={() => (showSelectedTechnologyRef.current = item?.title)}
+          // animation={{
+          //   name: `animationAndshow${0}`,
+          //   loop: true,
+          //   run: true,
+          // }}
+        >
+          <ViroText
+            text="React native"
+            textAlign="center"
+            key={`Text${0}`}
+            textAlignVertical="center"
+            textLineBreakMode="justify"
+            textClipMode="clipToBounds"
+            color="#FFF"
             width={1.5}
-            height={0.7}
-            radius={1.5}
-            position={indexPosition(index)}
-            rotation={[0, 0, 0]}
-            key={`View${index}`}
-            opacity={0.5}
-            materials="technologyBG"
-            borderColor="#000"
-            style={{radius: 0.5, opacity: 0, borderRadius: 5}}
-            onPress={() => (showSelectedTechnologyRef.current = item?.title)}
-            animation={{
-              name: `animationAndshow${index}`,
-              loop: true,
-              run: true,
-            }}>
-            <ViroText
-              text={item?.title}
-              textAlign="center"
-              key={`Text${index}`}
-              textAlignVertical="center"
-              textLineBreakMode="justify"
-              textClipMode="clipToBounds"
-              color="#000"
-              width={1.5}
-              height={0.5}
-            />
-          </ViroFlexView>
-
-          {/* <ViroPolyline
-            position={[0, -0.1, -10]}
-            points={[
-              [0, 1, 0],
-              [0, -index, 0],
-              [index % 2 === 0 ? -0.2 : 0.2, -index, 0],
-            ]}  
-            thickness={0.05}
-            materials={'line'}
-            opacity={0}
-            animation={{
-              name: `animationAndshow${index}`,
-              loop: true,
-              run: true,
-            }}
-          /> */}
-        </>
-      ))}
-      <ViroImage
-        source={require('./excellarate.png')}
-        position={[0, 1, -5]}
-        key={`Image`}
-        // animation={{name: 'animation1', loop: true, run: true}}
-        onClick={onPressTechnologyLogo}
-      />
+            height={0.5}
+          />
+        </ViroFlexView>
+      </>
+      {/* ))} */}
     </ViroARScene>
   );
 };
 
-export default RenderTechnologies;
+export default TechInfo;
 
 const styles = StyleSheet.create({});

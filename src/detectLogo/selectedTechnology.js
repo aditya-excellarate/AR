@@ -30,20 +30,9 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {
-  Viro360Image,
-  Viro3DObject,
-  ViroAmbientLight,
-  ViroAnimatedImage,
-  ViroAnimations,
-  ViroARImageMarker,
   ViroARScene,
-  ViroARSceneNavigator,
-  ViroARTrackingTargets,
-  ViroButton,
   ViroFlexView,
   ViroImage,
-  ViroMaterials,
-  ViroPolyline,
   ViroText,
 } from '@viro-community/react-viro';
 import {useNavigation} from '@react-navigation/native';

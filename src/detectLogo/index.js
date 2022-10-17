@@ -8,14 +8,26 @@ import {useState} from 'react';
 const DetectLogo = ({navigation}) => {
   const showCategoriesRef = useRef(null);
   const showTechnologiesRef = useRef(null);
+  const showSelectedTechnologyRef = useRef(null);
   const [showCategories, setShowCategories] = useState(false);
   const [showTechnologies, setShowTechnologies] = useState(false);
+  const [selectedTech, setSelectedTech] = useState('');
   console.log('navigation', navigation);
   React.useEffect(
     () =>
       navigation.addListener('beforeRemove', e => {
-        console.log('called', showTechnologiesRef, showCategoriesRef);
+        console.log(
+          'called',
+          showSelectedTechnologyRef,
+          showTechnologiesRef,
+          showCategoriesRef,
+        );
         e.preventDefault();
+        if (showSelectedTechnologyRef.current) {
+          setSelectedTech(false);
+          showSelectedTechnologyRef.current = '';
+          return null;
+        }
         if (showTechnologiesRef.current) {
           setShowTechnologies(false);
           showTechnologiesRef.current = false;
@@ -44,6 +56,7 @@ const DetectLogo = ({navigation}) => {
           passProps: {
             showCategoriesRef,
             showTechnologiesRef,
+            showSelectedTechnologyRef,
             showCategories,
             setShowCategories,
             showTechnologies,

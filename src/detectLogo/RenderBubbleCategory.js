@@ -93,7 +93,7 @@ const RenderCategories = ({onPressCategory, position}) => {
         onCollision={collision => console.log('onCollision', collision)}
         onClick={() => onPressCategory('BE')}>
         <ViroText
-          text="BEs"
+          text="BE"
           textAlign="center"
           textAlignVertical="center"
           textLineBreakMode="justify"

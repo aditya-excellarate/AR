@@ -12,6 +12,7 @@ import {
 } from '@viro-community/react-viro';
 import RenderBubbleCategory from './RenderBubbleCategory';
 import RenderTechnologies from './RenderTechnologies';
+import TechInfo from './TechInfo';
 const DetectCompany = ({
   setShowTechnologies,
   showTechnologies,
@@ -19,6 +20,7 @@ const DetectCompany = ({
   showCategories,
   showCategoriesRef,
   showTechnologiesRef,
+  showSelectedTechnologyRef,
 }) => {
   const [anchor, setAnchor] = useState(false);
   const [position, setPosition] = useState([0, 0, -5]);
@@ -82,11 +84,20 @@ const DetectCompany = ({
   };
 
   const renderScreen = () => {
-    if (showTechnologiesRef.current) {
+    if (showTechnologiesRef.current || true) {
+      return (
+        <TechInfo
+          position={position}
+          onPressTechnologyLogo={onPressTechnologyLogo}
+          onPressTechnology={showSelectedTechnologyRef}
+        />
+      );
+    } else if (showTechnologiesRef.current) {
       return (
         <RenderTechnologies
           position={position}
           onPressTechnologyLogo={onPressTechnologyLogo}
+          onPressTechnology={showSelectedTechnologyRef}
         />
       );
     } else if (showCategoriesRef.current) {
