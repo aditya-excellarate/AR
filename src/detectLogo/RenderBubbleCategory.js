@@ -73,6 +73,7 @@ const RenderCategories = ({onPressCategory, position}) => {
       physicalWidth: 0.165,
     },
   });
+
   return (
     <ViroARScene
       onCollision={collision => console.log('onCollision', collision)}>
@@ -118,7 +119,7 @@ const RenderCategories = ({onPressCategory, position}) => {
         rotation={[0, 0, 0]}
         opacity={0}
         onCollision={collision => console.log('onCollision', collision)}
-        onClick={() => onPressCategory('FE')}
+        onClick={() => onPressCategory('QA')}
         materials="bubble"
         animation={{
           name: !animationDone ? 'reverse' : 'forward',
@@ -152,7 +153,7 @@ const RenderCategories = ({onPressCategory, position}) => {
         rotation={[0, 0, 0]}
         opacity={0}
         onCollision={collision => console.log('onCollision', collision)}
-        onClick={() => onPressCategory('QA')}
+        onClick={() => onPressCategory('FE')}
         materials="bubble"
         animation={{
           name: !animationDone ? 'reverse' : 'forward',

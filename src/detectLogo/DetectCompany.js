@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {
   ViroAmbientLight,
@@ -6,9 +6,7 @@ import {
   ViroARImageMarker,
   ViroARScene,
   ViroARTrackingTargets,
-  ViroFlexView,
   ViroImage,
-  ViroText,
 } from '@viro-community/react-viro';
 import RenderBubbleCategory from './RenderBubbleCategory';
 import RenderTechnologies from './RenderTechnologies';
@@ -21,17 +19,13 @@ const DetectCompany = ({
   showCategoriesRef,
   showTechnologiesRef,
   showSelectedTechnologyRef,
+  setUpdated,
+  updated,
 }) => {
   const [anchor, setAnchor] = useState(false);
   const [position, setPosition] = useState([0, 0, -5]);
   const [positionUpdated, setPositionUpdated] = useState(false);
-  console.log(
-    'show categ',
-    showCategories,
-    showTechnologies,
-    showCategoriesRef,
-    showTechnologiesRef,
-  );
+
   ViroAnimations.registerAnimations({
     rotate: {
       duration: 2500,
@@ -70,26 +64,35 @@ const DetectCompany = ({
   const onPressLogo = () => {
     showCategoriesRef.current = true;
     setShowCategories(true);
+    setUpdated(!updated);
   };
 
   const onPressCategory = value => {
     setShowTechnologies(true);
-    showTechnologiesRef.current = true;
+    showTechnologiesRef.current = value;
     setAnchor(false);
+    setUpdated(!updated);
   };
 
   const onPressTechnologyLogo = () => {
     setShowTechnologies(false);
-    showTechnologiesRef.current = false;
+    showTechnologiesRef.current = '';
+    setUpdated(!updated);
+  };
+
+  const onPressTechnology = value => {
+    showSelectedTechnologyRef.current = value;
+    setUpdated(value);
   };
 
   const renderScreen = () => {
-    if (showTechnologiesRef.current || true) {
+    if (showSelectedTechnologyRef.current) {
       return (
         <TechInfo
           position={position}
           onPressTechnologyLogo={onPressTechnologyLogo}
-          onPressTechnology={showSelectedTechnologyRef}
+          onPressTechnology={onPressTechnology}
+          selectedTech={showSelectedTechnologyRef?.current}
         />
       );
     } else if (showTechnologiesRef.current) {
@@ -97,7 +100,8 @@ const DetectCompany = ({
         <RenderTechnologies
           position={position}
           onPressTechnologyLogo={onPressTechnologyLogo}
-          onPressTechnology={showSelectedTechnologyRef}
+          onPressTechnology={onPressTechnology}
+          selectedTech={showTechnologiesRef.current}
         />
       );
     } else if (showCategoriesRef.current) {

@@ -12,6 +12,7 @@ const DetectLogo = ({navigation}) => {
   const [showCategories, setShowCategories] = useState(false);
   const [showTechnologies, setShowTechnologies] = useState(false);
   const [selectedTech, setSelectedTech] = useState('');
+  const [updated, setUpdated] = useState(false);
   console.log('navigation', navigation);
   React.useEffect(
     () =>
@@ -30,7 +31,7 @@ const DetectLogo = ({navigation}) => {
         }
         if (showTechnologiesRef.current) {
           setShowTechnologies(false);
-          showTechnologiesRef.current = false;
+          showTechnologiesRef.current = '';
           return null;
         }
         if (showCategoriesRef.current) {
@@ -41,12 +42,11 @@ const DetectLogo = ({navigation}) => {
 
         // Prevent default behavior of leaving the screen
         e.preventDefault();
-        console.log('returned');
         navigation.dispatch(e.data.action);
       }),
     [navigation, showTechnologiesRef.current, showCategoriesRef.current],
   );
-  console.log('show', showTechnologiesRef);
+
   const renderItem = () => {
     return (
       <ViroARSceneNavigator
@@ -61,6 +61,9 @@ const DetectLogo = ({navigation}) => {
             setShowCategories,
             showTechnologies,
             setShowTechnologies,
+            setUpdated,
+            updated,
+            showSelectedTechnologyRef,
           },
         }}
         style={{flex: 1}}

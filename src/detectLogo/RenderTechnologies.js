@@ -6,59 +6,150 @@ import {
   ViroFlexView,
   ViroImage,
   ViroMaterials,
-  ViroPolyline,
   ViroText,
 } from '@viro-community/react-viro';
 import {useState} from 'react';
 const detectedPosition = [0, 0, 0];
+const dummyTechnologyArray = {
+  FE: [
+    {
+      title: 'React',
+      key: 'React',
+      image: require('./logos/react.png'),
+    },
+    {
+      title: 'React Native',
+      key: 'React_native',
+      image: require('./logos/react.png'),
+    },
+    {
+      title: 'Angular',
+      key: 'Angular',
+      image: require('./logos/angular.png'),
+    },
+    {
+      title: 'Vue',
+      key: 'Vue',
+      image: require('./logos/vue.png'),
+    },
+    {
+      title: 'HTML',
+      key: 'HTML',
+    },
+    {
+      title: 'CSS',
+      key: 'CSS',
+    },
+    {
+      title: 'Javascript',
+      key: 'Javascript',
+      image: require('./logos/js.png'),
+    },
+    {
+      title: 'Flutter',
+      key: 'Flutter ',
+      image: require('./logos/flutter.png'),
+    },
+    {
+      title: 'Swift',
+      key: 'Swift',
+      image: require('./logos/swift.png'),
+    },
+    {
+      title: 'Kotlin',
+      key: 'Kotlin',
+      image: require('./logos/kotlin.png'),
+    },
+    {
+      title: 'Redux',
+      key: 'Redux',
+      image: require('./logos/redux.png'),
+    },
 
-const staticTechnologyArray = [
-  {
-    title: 'React',
-  },
-  {
-    title: 'Node',
-  },
-  {
-    title: 'React Native',
-  },
-  {
-    title: 'Angular',
-  },
-  {
-    title: 'Vue',
-  },
-  {
-    title: 'HTML',
-  },
-  {
-    title: 'CSS',
-  },
-  {
-    title: 'Javascript',
-  },
-  {
-    title: 'Flutter',
-  },
-  {
-    title: 'Swift',
-  },
-  {
-    title: 'Kotlin',
-  },
-  {
-    title: 'Redux',
-  },
-  {
-    title: 'Php',
-  },
-  {
-    title: 'Web3.0',
-  },
-  {
-    title: 'Bootstrap',
-  },
-];
+    {
+      title: 'Web3.0',
+      key: 'Web3.0',
+      // image: require('./logos/node.png'),
+    },
+    {
+      title: 'Bootstrap',
+      key: 'Bootstrap',
+      image: require('./logos/bootstrap.png'),
+    },
+    {
+      title: 'WordPress',
+      key: 'WordPress',
+      image: require('./logos/wordpress.png'),
+    },
+    {
+      title: 'ARKIT',
+      key: 'ARKIT',
+    },
+    {
+      title: 'PWA',
+      key: 'PWA',
+      image: require('./logos/pwa.png'),
+    },
+    {
+      title: 'Tableau',
+      key: 'Tableau',
+      image: require('./logos/tableau.png'),
+    },
+  ],
+  BE: [
+    {
+      title: 'Node',
+      key: 'Node',
+      image: require('./logos/node.png'),
+    },
+    {
+      title: 'Php',
+      key: 'Php',
+      image: require('./logos/php.png'),
+    },
+    {
+      title: 'AWS',
+      key: 'AWS',
+      image: require('./logos/Aws.png'),
+    },
+    {
+      title: 'AWS Lambda',
+      key: 'AWS_Lambda',
+      image: require('./logos/lambda.png'),
+    },
+    {
+      title: 'Azure',
+      key: 'Azure',
+      image: require('./logos/azure.png'),
+    },
+    {
+      title: 'docker',
+      key: 'docker',
+      image: require('./logos/docker.png'),
+    },
+    {
+      title: 'hyperledger blockchain',
+      key: 'hperledger_blockchain',
+      image: require('./logos/node.png'),
+    },
+  ],
+  QA: [
+    {
+      title: 'Jenkins',
+      key: 'Jenkins',
+      image: require('./logos/jenkins.png'),
+    },
+    {
+      title: 'Selenium',
+      key: 'Selenium',
+      image: require('./logos/selenium .png'),
+    },
+    {
+      title: 'Cucumber',
+      key: 'Cucumber',
+    },
+  ],
+};
 
 const positions = [
   [detectedPosition[0], detectedPosition[0], -10],
@@ -77,10 +168,17 @@ const positions = [
   [detectedPosition[0] - 3, detectedPosition[0] - 0.5, -10],
   [detectedPosition[0] + 3, detectedPosition[0] + 0, -10],
   [detectedPosition[0], detectedPosition[0] + 8, -10],
+  [detectedPosition[0] + 5, detectedPosition[0] + 8, -10],
 ];
-const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
-  const [technologyArray, setTechnologyArray] = useState(staticTechnologyArray);
 
+const RenderTechnologies = ({
+  onPressTechnologyLogo,
+  selectedTech,
+  onPressTechnology,
+}) => {
+  const [technologyArray, setTechnologyArray] = useState(
+    dummyTechnologyArray['FE'],
+  );
   technologyArray?.map((item, index) => {
     const position = index.toString();
     ViroAnimations.registerAnimations({
@@ -114,17 +212,6 @@ const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
 
   const indexPosition = value => {
     return positions[value];
-    // const position = -value;
-    // const z = value + 2;
-    // if (value % 2 === 0) {
-    //   const x = -value;
-    //   return [getRandomInt(-7, 7), getRandomInt(-7, 7), -10];
-    // }
-    // if (value % 3 === 0) {
-    //   const x = value + 2;
-    //   return [getRandomInt(1, 5), getRandomInt(1, 5), -10];
-    // }
-    // return [getRandomInt(-3, -1), getRandomInt(-3, -1), -10];
   };
 
   ViroMaterials.createMaterials({
@@ -134,51 +221,59 @@ const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
     technologyBG: {
       normalTexture: require('./technologyBG.png'),
       diffuseTexture: require('./technologyBG.png'),
-      // animation: {
-      //   name: animationDone ? 'reverse' : 'forward',
-      //   loop: false,
-      //   run: true,
-      //   onFinish: () => setAnimationDone(!animationDone),
-      // },
+
       rotateY: '+=90',
     },
   });
 
   return (
     <ViroARScene>
-      {technologyArray?.map((item, index) => (
-        <>
-          <ViroFlexView
-            width={1.5}
-            height={0.7}
-            radius={1.5}
-            position={indexPosition(index)}
-            rotation={[0, 0, 0]}
-            key={`View${index}`}
-            opacity={0.5}
-            materials="technologyBG"
-            borderColor="#000"
-            style={{radius: 0.5, opacity: 0, borderRadius: 5}}
-            onPress={() => (showSelectedTechnologyRef.current = item?.title)}
-            animation={{
-              name: `animationAndshow${index}`,
-              loop: true,
-              run: true,
-            }}>
-            <ViroText
-              text={item?.title}
-              textAlign="center"
-              key={`Text${index}`}
-              textAlignVertical="center"
-              textLineBreakMode="justify"
-              textClipMode="clipToBounds"
-              color="#000"
+      {technologyArray?.map((item, index) => {
+        const IP = indexPosition(index);
+        return (
+          <>
+            {!!item?.image && (
+              <ViroImage
+                source={item?.image}
+                position={[IP[0] - 1.2, IP[1] + 0.1, IP[2]]}
+                key={`Image`}
+                width={0.5}
+                height={0.5}
+                // animation={{name: 'animation1', loop: true, run: true}}
+              />
+            )}
+            <ViroFlexView
               width={1.5}
-              height={0.5}
-            />
-          </ViroFlexView>
+              height={0.7}
+              radius={1.5}
+              position={indexPosition(index)}
+              rotation={[0, 0, 0]}
+              key={`View${index}`}
+              opacity={0.5}
+              materials="technologyBG"
+              borderColor="#000"
+              style={{radius: 0.5, opacity: 0, borderRadius: 5}}
+              onClick={() => onPressTechnology(item?.key)}
+              animation={{
+                name: `animationAndshow${index}`,
+                loop: true,
+                run: true,
+              }}>
+              <ViroText
+                text={item?.title}
+                textAlign="center"
+                key={`Text${index}`}
+                textAlignVertical="center"
+                textLineBreakMode="justify"
+                textClipMode="clipToBounds"
+                color="#000"
+                width={1.5}
+                height={0.5}
+                onClick={() => onPressTechnology(item?.key)}
+              />
+            </ViroFlexView>
 
-          {/* <ViroPolyline
+            {/* <ViroPolyline
             position={[0, -0.1, -10]}
             points={[
               [0, 1, 0],
@@ -194,8 +289,10 @@ const RenderTechnologies = ({onPressCategory, onPressTechnologyLogo}) => {
               run: true,
             }}
           /> */}
-        </>
-      ))}
+          </>
+        );
+      })}
+
       <ViroImage
         source={require('./excellarate.png')}
         position={[0, 1, -5]}
