@@ -19,7 +19,7 @@ const Home = ({navigation}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('Object3D')}
         style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
-        <Text style={{color: '#000'}}>Object3D</Text>
+        <Text style={{color: '#000'}}>Animated 3D object</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -31,12 +31,17 @@ const Home = ({navigation}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('SwitchingObjects')}
         style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
-        <Text style={{color: '#000'}}>SwitchingObjects</Text>
+        <Text style={{color: '#000'}}>Works on Object3D</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('DetectLogo')}
         style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
         <Text style={{color: '#000'}}>Detect Logo</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        // onPress={() => navigation.navigate('DetectLogo')}
+        style={{backgroundColor: '#FFF', padding: 20, marginVertical: 10}}>
+        <Text style={{color: '#000'}}>Portals</Text>
       </TouchableOpacity>
     </View>
   );

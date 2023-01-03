@@ -15,7 +15,7 @@ import selectedTechnology from '../detectLogo/selectedTechnology';
 
 const Stack = createNativeStackNavigator();
 const Routes = () => {
-  console.disableYellowBox = true;
+  // console.ignoreAllLogs(true);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">

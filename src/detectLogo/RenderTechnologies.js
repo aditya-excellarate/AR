@@ -142,7 +142,7 @@ const dummyTechnologyArray = {
     {
       title: 'Selenium',
       key: 'Selenium',
-      image: require('./logos/selenium .png'),
+      image: require('./logos/selenium.png'),
     },
     {
       title: 'Cucumber',
@@ -153,7 +153,7 @@ const dummyTechnologyArray = {
 
 const positions = [
   [detectedPosition[0], detectedPosition[0], -10],
-  [detectedPosition[0] + 2, detectedPosition[0] + 2, -10],
+  [detectedPosition[0] + 3, detectedPosition[0] + 2, -10],
   [detectedPosition[0] - 3, detectedPosition[0] + 2, -10],
   [detectedPosition[0] - 2, detectedPosition[0] + 5, -10],
   [detectedPosition[0] + 1, detectedPosition[0] + 6, -10],
